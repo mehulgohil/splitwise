@@ -32,14 +32,17 @@ func main()  {
 	fmt.Println("Connected!")
 
 	serviceStruct := service.ServiceStruct{
-		db,
+		DB: db,
 	}
 	handlerStruct := controller.HandlerStruct{
 		ServiceStruct: serviceStruct,
 	}
 
 	app := iris.New()
-	app.Post("/transaction", handlerStruct.PostTransactionHandler)
+	app.Post("/transactions", handlerStruct.PostTransactionHandler)
+	app.Get("/transactions/oweBy/{mobileNo: string}", handlerStruct.GetOweByTransactionHandler)
+	app.Get("/transactions/oweTo/{mobileNo: string}", handlerStruct.GetOweToTransactionHandler)
+	app.Patch("/transactions/{transactionId: int}", handlerStruct.PatchTransactionHandler)
 
 	_ = app.Listen(":8080")
 
