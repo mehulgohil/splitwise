@@ -1,1 +1,1 @@
-# spliwise
+# splitwise
