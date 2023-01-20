@@ -10,6 +10,7 @@ import (
 func (s *ServiceStruct) GetOweByTransactions(mobile string) ([]models.TransactionModel, error) {
 	var finalResp []models.TransactionModel
 	var oweByPeopleId int
+
 	// get people id by mobile number
 	sqlErr := s.DB.QueryRow("SELECT id FROM people WHERE mobile_number = ?", mobile).Scan(&oweByPeopleId)
 	if sqlErr != nil && sqlErr == sql.ErrNoRows{
