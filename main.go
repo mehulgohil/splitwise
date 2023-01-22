@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/go-sql-driver/mysql"
+	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
 	"github.com/mehulgohil/splitwise/controller"
 	"github.com/mehulgohil/splitwise/service"
@@ -39,6 +40,15 @@ func main()  {
 	}
 
 	app := iris.New()
+
+	crs := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowCredentials: true,
+		AllowedMethods: []string{"GET", "POST", "DELETE", "PATCH", "OPTIONS"},
+	})
+
+	app.UseRouter(crs)
+
 	app.Post("/transactions", handlerStruct.PostTransactionHandler)
 	app.Get("/transactions/oweBy/{mobileNo: string}", handlerStruct.GetOweByTransactionHandler)
 	app.Get("/transactions/oweTo/{mobileNo: string}", handlerStruct.GetOweToTransactionHandler)

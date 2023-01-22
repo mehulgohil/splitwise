@@ -29,5 +29,5 @@ func (h *HandlerStruct) PatchTransactionHandler(ctx iris.Context) {
 		return
 	}
 	ctx.StatusCode(iris.StatusOK)
-	_, _ = ctx.JSON("success")
+	_ = ctx.JSON("success")
 }

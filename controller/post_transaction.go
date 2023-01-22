@@ -15,6 +15,7 @@ func (h *HandlerStruct) PostTransactionHandler(ctx iris.Context) {
 	var req models.TransactionModel
 	err := ctx.ReadJSON(&req)
 	if err != nil {
+		golog.Error(err)
 		ctx.StatusCode(iris.StatusBadRequest)
 		return
 	}
@@ -25,5 +26,5 @@ func (h *HandlerStruct) PostTransactionHandler(ctx iris.Context) {
 		return
 	}
 	ctx.StatusCode(iris.StatusCreated)
-	_, _ = ctx.JSON("success")
+	_ = ctx.JSON("success")
 }

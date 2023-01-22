@@ -13,7 +13,7 @@ func (h *HandlerStruct) GetOweToTransactionHandler(ctx iris.Context){
 		ctx.StatusCode(iris.StatusInternalServerError)
 		return
 	}
-	_, _ = ctx.JSON(resp)
+	_ = ctx.JSON(resp)
 }
 
 func (h *HandlerStruct) GetOweByTransactionHandler(ctx iris.Context){
@@ -24,5 +24,5 @@ func (h *HandlerStruct) GetOweByTransactionHandler(ctx iris.Context){
 		ctx.StatusCode(iris.StatusInternalServerError)
 		return
 	}
-	_, _ = ctx.JSON(resp)
+	_ = ctx.JSON(resp)
 }
