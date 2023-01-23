@@ -15,8 +15,9 @@ Frontend using React
 4. dbName: splitwise
 
 ## Frontend
-1. `npm install`
-2. `npm start`
+1. `cd frontend/splitwise-frontend`
+2. `npm install`
+3. `npm start`
 
 ## DB Structure
 
